@@ -10,7 +10,8 @@
 /* ============================
    2. THEMES
    ============================ */
-/* Terminal (default) must come first */
+/* Minimal (default) must come first */
+@import url('./themes/theme-minimal.css');
 @import url('./themes/theme-terminal.css');
 @import url('./themes/theme-amber.css');
 @import url('./themes/theme-paper.css');

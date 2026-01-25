@@ -8,6 +8,7 @@
 
   // Available themes
   const THEMES = [
+    { id: 'minimal', name: 'Minimal', icon: '.' },
     { id: 'terminal', name: 'Terminal', icon: '>' },
     { id: 'amber', name: 'Amber', icon: '*' },
     { id: 'paper', name: 'Paper', icon: '#' },
@@ -17,7 +18,7 @@
   ];
 
   const STORAGE_KEY = 'germanheller-theme';
-  const DEFAULT_THEME = 'terminal';
+  const DEFAULT_THEME = 'minimal';
 
   let currentThemeIndex = 0;
 
