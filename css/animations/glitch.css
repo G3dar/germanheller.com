@@ -1,0 +1,232 @@
+/* Glitch Effects */
+
+/* Basic glitch text */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-deep);
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 #00ffff;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  }
+  20% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 50%, 0 50%);
+  }
+  40% {
+    clip-path: polygon(0 30%, 100% 30%, 100% 65%, 0 65%);
+  }
+  60% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 80%, 0 80%);
+  }
+  80% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 95%, 0 95%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  }
+  20% {
+    clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+  }
+  40% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 85%, 0 85%);
+  }
+  60% {
+    clip-path: polygon(0 35%, 100% 35%, 100% 70%, 0 70%);
+  }
+  80% {
+    clip-path: polygon(0 20%, 100% 20%, 100% 55%, 0 55%);
+  }
+  100% {
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  }
+}
+
+/* Glitch on hover only */
+.glitch-hover {
+  position: relative;
+}
+
+.glitch-hover::before,
+.glitch-hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.glitch-hover:hover::before,
+.glitch-hover:hover::after {
+  opacity: 0.8;
+}
+
+.glitch-hover:hover::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  animation: glitch-hover-1 0.3s infinite;
+}
+
+.glitch-hover:hover::after {
+  left: -2px;
+  text-shadow: 2px 0 #00ffff;
+  animation: glitch-hover-2 0.3s infinite;
+}
+
+@keyframes glitch-hover-1 {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-3px);
+  }
+  66% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes glitch-hover-2 {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(3px);
+  }
+  66% {
+    transform: translateX(-3px);
+  }
+}
+
+/* Screen tear effect */
+@keyframes screen-tear {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+  }
+  10% {
+    clip-path: inset(0 0 80% 0);
+  }
+  15% {
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    clip-path: inset(40% 0 40% 0);
+  }
+  25% {
+    clip-path: inset(0 0 0 0);
+  }
+  30% {
+    clip-path: inset(70% 0 10% 0);
+  }
+  35% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.screen-tear {
+  animation: screen-tear 4s infinite;
+}
+
+/* Distortion wave */
+@keyframes distortion {
+  0%, 100% {
+    transform: translateX(0) skewX(0);
+  }
+  25% {
+    transform: translateX(-2px) skewX(-0.5deg);
+  }
+  50% {
+    transform: translateX(2px) skewX(0.5deg);
+  }
+  75% {
+    transform: translateX(-1px) skewX(-0.25deg);
+  }
+}
+
+.distortion {
+  animation: distortion 0.5s infinite;
+}
+
+/* Flicker effect */
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  41% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.8;
+  }
+  43% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.3;
+  }
+  46% {
+    opacity: 1;
+  }
+}
+
+.flicker {
+  animation: flicker 3s infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after,
+  .glitch-hover::before,
+  .glitch-hover::after,
+  .screen-tear,
+  .distortion,
+  .flicker {
+    animation: none;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+}
+
+/* Only enable glitch effects for VHS theme */
+:root:not([data-theme="vhs"]) .glitch::before,
+:root:not([data-theme="vhs"]) .glitch::after {
+  display: none;
+}

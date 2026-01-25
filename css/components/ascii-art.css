@@ -1,0 +1,216 @@
+/* ASCII Art Decorative Elements */
+
+/* ASCII Art Container */
+.ascii-art {
+  font-family: var(--font-mono);
+  white-space: pre;
+  line-height: 1.2;
+  color: var(--color-primary);
+  text-shadow: var(--text-glow);
+  font-size: var(--font-size-xs);
+  overflow: hidden;
+}
+
+.ascii-art--muted {
+  color: var(--color-border);
+  text-shadow: none;
+}
+
+.ascii-art--accent {
+  color: var(--color-accent);
+}
+
+/* Decorative Borders */
+.ascii-border {
+  color: var(--color-border);
+}
+
+.ascii-border--top::before,
+.ascii-border--bottom::after {
+  content: '════════════════════════════════════════════════════════════════';
+  display: block;
+  overflow: hidden;
+  color: var(--color-border);
+}
+
+/* Corner Decorations */
+.ascii-corner {
+  position: relative;
+}
+
+.ascii-corner::before {
+  content: '┌';
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.ascii-corner::after {
+  content: '┘';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: var(--color-primary);
+}
+
+/* Box Drawing */
+.ascii-box {
+  border: 1px solid var(--color-border);
+  position: relative;
+  padding: 1.5rem;
+}
+
+.ascii-box::before {
+  content: '╔══╗';
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  background-color: var(--color-bg-deep);
+  padding-inline: 0.5rem;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+}
+
+/* Divider */
+.ascii-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-border);
+  margin: 2rem 0;
+}
+
+.ascii-divider::before,
+.ascii-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-border) 0,
+    var(--color-border) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.ascii-divider__text {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* Section Markers */
+.section-marker {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.section-marker::before {
+  content: '// ';
+  color: var(--color-primary);
+}
+
+/* Decorative Line Numbers */
+.line-numbers {
+  counter-reset: line;
+  padding-left: 3rem;
+  position: relative;
+}
+
+.line-numbers > * {
+  counter-increment: line;
+  position: relative;
+}
+
+.line-numbers > *::before {
+  content: counter(line, decimal-leading-zero);
+  position: absolute;
+  left: -3rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  opacity: 0.5;
+}
+
+/* Status Indicator */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+}
+
+.status-indicator__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-indicator--online .status-indicator__dot {
+  background-color: #27c93f;
+  box-shadow: 0 0 10px #27c93f;
+}
+
+.status-indicator--offline .status-indicator__dot {
+  background-color: #ff5f56;
+  box-shadow: 0 0 10px #ff5f56;
+}
+
+/* ASCII Logo Placeholder */
+.ascii-logo {
+  font-size: var(--font-size-xs);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+/* Decorative Brackets */
+.bracket-wrap::before {
+  content: '[ ';
+  color: var(--color-primary);
+}
+
+.bracket-wrap::after {
+  content: ' ]';
+  color: var(--color-primary);
+}
+
+/* Command Prompt Style */
+.prompt {
+  color: var(--color-text-muted);
+}
+
+.prompt::before {
+  content: '$ ';
+  color: var(--color-primary);
+}
+
+/* File Path Style */
+.file-path {
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+}
+
+.file-path::before {
+  content: '~/ ';
+  color: var(--color-text-muted);
+}
+
+/* Matrix-style decorative text */
+.matrix-text {
+  opacity: 0.1;
+  font-size: var(--font-size-xs);
+  line-height: 1;
+  word-wrap: break-word;
+  overflow: hidden;
+}

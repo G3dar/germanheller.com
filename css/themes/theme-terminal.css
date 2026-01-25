@@ -1,0 +1,120 @@
+/* Theme: Terminal - Green Phosphor Monitor (Default) */
+
+:root,
+:root[data-theme="terminal"] {
+  /* Primary Colors */
+  --color-primary: #00ff00;
+  --color-accent: #00cc00;
+  --color-glow: rgba(0, 255, 0, 0.3);
+
+  /* Background Colors */
+  --color-bg-deep: #000000;
+  --color-bg-surface: #0a0a0a;
+  --color-bg-elevated: #111111;
+
+  /* Text Colors */
+  --color-text-primary: #00ff00;
+  --color-text-secondary: #00cc00;
+  --color-text-muted: #007700;
+
+  /* Border Colors */
+  --color-border: #004400;
+  --color-border-hover: #00ff00;
+
+  /* Effects */
+  --text-glow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.3);
+  --box-glow: 0 0 20px rgba(0, 255, 0, 0.2);
+
+  /* Scanlines */
+  --scanline-opacity: 0.05;
+  --scanline-color: rgba(0, 0, 0, 0.1);
+
+  /* Image Filters */
+  --image-filter: grayscale(100%) brightness(0.8) contrast(1.2);
+  --image-filter-hover: grayscale(100%) brightness(1) contrast(1.2) drop-shadow(0 0 10px rgba(0, 255, 0, 0.5));
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-theme: 400ms ease;
+}
+
+/* Theme-specific body styles */
+[data-theme="terminal"] body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+}
+
+/* CRT Screen Effect */
+[data-theme="terminal"] .crt-effect::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 9999;
+  opacity: var(--scanline-opacity);
+}
+
+/* Vignette Effect */
+[data-theme="terminal"] .crt-effect::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 9998;
+}
+
+/* Link hover glow */
+[data-theme="terminal"] a:hover {
+  text-shadow: var(--text-glow);
+}
+
+/* Button styling */
+[data-theme="terminal"] button:hover,
+[data-theme="terminal"] .btn:hover {
+  box-shadow: var(--box-glow);
+}
+
+/* Selection */
+[data-theme="terminal"] ::selection {
+  background-color: var(--color-primary);
+  color: var(--color-bg-deep);
+}
+
+/* Scrollbar */
+[data-theme="terminal"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 0;
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}

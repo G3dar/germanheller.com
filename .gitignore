@@ -1,0 +1,35 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Dependencies (if any added later)
+node_modules/
+
+# Build output (if any added later)
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp

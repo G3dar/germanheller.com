@@ -1,0 +1,179 @@
+/* Scanlines and CRT Effects */
+
+/* Main scanlines overlay */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 2px
+  );
+  opacity: var(--scanline-opacity, 0.05);
+}
+
+/* Horizontal scan animation */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  animation: scanline-move 8s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanline-move {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* CRT Flicker */
+@keyframes crt-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.9;
+  }
+  94% {
+    opacity: 1;
+  }
+}
+
+.crt-flicker {
+  animation: crt-flicker 4s infinite;
+}
+
+/* Vignette effect */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* Screen curvature effect (subtle) */
+.crt-curve {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9997;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+/* Phosphor glow */
+@keyframes phosphor-glow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.02);
+  }
+}
+
+.phosphor-glow {
+  animation: phosphor-glow 2s ease-in-out infinite;
+}
+
+/* RGB shift on elements */
+.rgb-shift {
+  position: relative;
+}
+
+.rgb-shift::before,
+.rgb-shift::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.rgb-shift::before {
+  color: #ff0000;
+  transform: translateX(-2px);
+  mix-blend-mode: screen;
+}
+
+.rgb-shift::after {
+  color: #00ffff;
+  transform: translateX(2px);
+  mix-blend-mode: screen;
+}
+
+/* Noise texture */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9996;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scanlines::after,
+  .crt-flicker,
+  .phosphor-glow {
+    animation: none;
+  }
+}
+
+/* Disable effects when explicitly turned off */
+[data-scanlines="false"] .scanlines,
+[data-scanlines="false"] .vignette,
+[data-scanlines="false"] .crt-curve,
+[data-scanlines="false"] .noise-overlay {
+  display: none;
+}

@@ -1,0 +1,112 @@
+/* Theme: Amber - Vintage CRT Warm */
+
+:root[data-theme="amber"] {
+  /* Primary Colors */
+  --color-primary: #ffb000;
+  --color-accent: #ff8c00;
+  --color-glow: rgba(255, 176, 0, 0.3);
+
+  /* Background Colors */
+  --color-bg-deep: #1a1000;
+  --color-bg-surface: #241800;
+  --color-bg-elevated: #2e2000;
+
+  /* Text Colors */
+  --color-text-primary: #ffb000;
+  --color-text-secondary: #cc8c00;
+  --color-text-muted: #806000;
+
+  /* Border Colors */
+  --color-border: #4d3000;
+  --color-border-hover: #ffb000;
+
+  /* Effects */
+  --text-glow: 0 0 10px rgba(255, 176, 0, 0.5), 0 0 20px rgba(255, 176, 0, 0.3);
+  --box-glow: 0 0 20px rgba(255, 176, 0, 0.2);
+
+  /* Scanlines */
+  --scanline-opacity: 0.04;
+  --scanline-color: rgba(0, 0, 0, 0.1);
+
+  /* Image Filters */
+  --image-filter: sepia(100%) saturate(300%) brightness(0.7) contrast(1.1);
+  --image-filter-hover: sepia(100%) saturate(400%) brightness(0.9) contrast(1.2) drop-shadow(0 0 10px rgba(255, 176, 0, 0.5));
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-theme: 400ms ease;
+}
+
+/* Theme-specific body styles */
+[data-theme="amber"] body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+}
+
+/* CRT Screen Effect - Amber tinted */
+[data-theme="amber"] .crt-effect::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(26, 16, 0, 0.15),
+    rgba(26, 16, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 9999;
+  opacity: var(--scanline-opacity);
+}
+
+/* Warm Vignette */
+[data-theme="amber"] .crt-effect::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(26, 16, 0, 0.5) 100%
+  );
+  z-index: 9998;
+}
+
+/* Link hover glow */
+[data-theme="amber"] a:hover {
+  text-shadow: var(--text-glow);
+}
+
+/* Selection */
+[data-theme="amber"] ::selection {
+  background-color: var(--color-primary);
+  color: var(--color-bg-deep);
+}
+
+/* Scrollbar */
+[data-theme="amber"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="amber"] ::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+[data-theme="amber"] ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+[data-theme="amber"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}

@@ -1,0 +1,137 @@
+/* Theme: Blueprint - Technical Drawing */
+
+:root[data-theme="blueprint"] {
+  /* Primary Colors */
+  --color-primary: #ffffff;
+  --color-accent: #00d4ff;
+  --color-glow: rgba(0, 212, 255, 0.3);
+
+  /* Background Colors */
+  --color-bg-deep: #003366;
+  --color-bg-surface: #004080;
+  --color-bg-elevated: #004d99;
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b3d9ff;
+  --color-text-muted: #6699cc;
+
+  /* Border Colors */
+  --color-border: #3399cc;
+  --color-border-hover: #00d4ff;
+
+  /* Effects */
+  --text-glow: 0 0 5px rgba(255, 255, 255, 0.5);
+  --box-glow: 0 0 15px rgba(0, 212, 255, 0.3);
+
+  /* Scanlines - Grid effect */
+  --scanline-opacity: 0.03;
+  --scanline-color: rgba(255, 255, 255, 0.05);
+
+  /* Image Filters */
+  --image-filter: brightness(1.1) contrast(1.1) saturate(0.5);
+  --image-filter-hover: brightness(1.2) contrast(1.2) saturate(0.7) drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-theme: 400ms ease;
+}
+
+/* Theme-specific body styles */
+[data-theme="blueprint"] body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+}
+
+/* Grid Pattern Background */
+[data-theme="blueprint"] .crt-effect::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 9999;
+  opacity: 1;
+}
+
+/* Blueprint vignette */
+[data-theme="blueprint"] .crt-effect::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 70%,
+    rgba(0, 26, 51, 0.5) 100%
+  );
+  z-index: 9998;
+}
+
+/* Cyan accents for links */
+[data-theme="blueprint"] a:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 10px var(--color-accent);
+}
+
+/* Technical drawing style borders */
+[data-theme="blueprint"] .project-card,
+[data-theme="blueprint"] .photo-frame,
+[data-theme="blueprint"] .press-item {
+  border: 1px dashed var(--color-border);
+}
+
+[data-theme="blueprint"] .project-card:hover,
+[data-theme="blueprint"] .photo-frame:hover {
+  border-style: solid;
+  border-color: var(--color-accent);
+}
+
+/* Selection */
+[data-theme="blueprint"] ::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg-deep);
+}
+
+/* Scrollbar */
+[data-theme="blueprint"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="blueprint"] ::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+[data-theme="blueprint"] ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+[data-theme="blueprint"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Dimension line style */
+[data-theme="blueprint"] .ascii-divider::before,
+[data-theme="blueprint"] .ascii-divider::after {
+  background: var(--color-border);
+  height: 1px;
+}
+
+/* Corner markers */
+[data-theme="blueprint"] .photo-frame::before,
+[data-theme="blueprint"] .photo-frame::after {
+  content: '+';
+  color: var(--color-accent);
+}

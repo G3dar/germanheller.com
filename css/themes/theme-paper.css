@@ -1,0 +1,121 @@
+/* Theme: Paper - Typewriter Aesthetic */
+
+:root[data-theme="paper"] {
+  /* Primary Colors */
+  --color-primary: #2c2c2c;
+  --color-accent: #8b0000;
+  --color-glow: rgba(0, 0, 0, 0.1);
+
+  /* Background Colors */
+  --color-bg-deep: #f5f2e8;
+  --color-bg-surface: #ebe8de;
+  --color-bg-elevated: #ffffff;
+
+  /* Text Colors */
+  --color-text-primary: #2c2c2c;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: #7a7a7a;
+
+  /* Border Colors */
+  --color-border: #c4c0b4;
+  --color-border-hover: #2c2c2c;
+
+  /* Effects - Subtle for paper */
+  --text-glow: none;
+  --box-glow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Scanlines - Disabled */
+  --scanline-opacity: 0;
+  --scanline-color: transparent;
+
+  /* Image Filters */
+  --image-filter: grayscale(100%) contrast(1.1) brightness(1.05);
+  --image-filter-hover: grayscale(50%) contrast(1.1) brightness(1.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-theme: 400ms ease;
+}
+
+/* Theme-specific body styles */
+[data-theme="paper"] body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  /* Paper texture effect */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+}
+
+/* No CRT effects for paper */
+[data-theme="paper"] .crt-effect::before,
+[data-theme="paper"] .crt-effect::after {
+  display: none;
+}
+
+/* Typewriter-style headers */
+[data-theme="paper"] h1,
+[data-theme="paper"] h2,
+[data-theme="paper"] h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Red accent for special elements */
+[data-theme="paper"] .bio__title,
+[data-theme="paper"] .section-marker::before {
+  color: var(--color-accent);
+}
+
+/* Underline links instead of glow */
+[data-theme="paper"] a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Selection */
+[data-theme="paper"] ::selection {
+  background-color: var(--color-primary);
+  color: var(--color-bg-deep);
+}
+
+/* Scrollbar */
+[data-theme="paper"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="paper"] ::-webkit-scrollbar-track {
+  background: var(--color-bg-surface);
+}
+
+[data-theme="paper"] ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+[data-theme="paper"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Border style adjustments */
+[data-theme="paper"] .ascii-box,
+[data-theme="paper"] .contact__terminal,
+[data-theme="paper"] .awards__terminal {
+  border: 2px solid var(--color-primary);
+  box-shadow: 4px 4px 0 var(--color-border);
+}
+
+/* Terminal dots as typewriter style */
+[data-theme="paper"] .contact__terminal-dot,
+[data-theme="paper"] .awards__terminal-dot {
+  background-color: var(--color-text-muted);
+}
+
+/* Cursor as underscore */
+[data-theme="paper"] .bio__cursor,
+[data-theme="paper"] .contact__cta-cursor {
+  background-color: var(--color-primary);
+  height: 2px;
+  width: 0.8em;
+  vertical-align: baseline;
+}

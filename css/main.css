@@ -1,0 +1,111 @@
+/* Main CSS - Imports all stylesheets */
+
+/* ============================
+   1. BASE STYLES
+   ============================ */
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+@import url('./base/layout.css');
+
+/* ============================
+   2. THEMES
+   ============================ */
+/* Terminal (default) must come first */
+@import url('./themes/theme-terminal.css');
+@import url('./themes/theme-amber.css');
+@import url('./themes/theme-paper.css');
+@import url('./themes/theme-blueprint.css');
+@import url('./themes/theme-vhs.css');
+@import url('./themes/theme-midnight.css');
+
+/* ============================
+   3. COMPONENTS
+   ============================ */
+@import url('./components/header.css');
+@import url('./components/bio.css');
+@import url('./components/projects.css');
+@import url('./components/awards.css');
+@import url('./components/photos.css');
+@import url('./components/press.css');
+@import url('./components/contact.css');
+@import url('./components/ascii-art.css');
+
+/* ============================
+   4. ANIMATIONS
+   ============================ */
+@import url('./animations/transitions.css');
+@import url('./animations/typing.css');
+@import url('./animations/scanlines.css');
+@import url('./animations/glitch.css');
+
+/* ============================
+   5. GLOBAL OVERRIDES
+   ============================ */
+
+/* Ensure body uses theme colors */
+body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-bg-deep);
+  padding: 0.5rem 1rem;
+  z-index: 10001;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hide focus for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Smooth scroll with reduced motion check */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .theme-switcher,
+  .scanlines,
+  .vignette,
+  .crt-effect::before,
+  .crt-effect::after {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,196 @@
+/* Contact Section */
+
+.contact {
+  background-color: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.contact__header {
+  margin-bottom: 3rem;
+}
+
+.contact__title {
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  text-shadow: var(--text-glow);
+  margin-bottom: 0.5rem;
+}
+
+.contact__title::before {
+  content: '## ';
+  color: var(--color-text-muted);
+}
+
+.contact__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Terminal Box */
+.contact__terminal {
+  max-width: 600px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-deep);
+}
+
+.contact__terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+}
+
+.contact__terminal-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact__terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.contact__terminal-dot--red { background-color: #ff5f56; }
+.contact__terminal-dot--yellow { background-color: #ffbd2e; }
+.contact__terminal-dot--green { background-color: #27c93f; }
+
+.contact__terminal-title {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.contact__terminal-body {
+  padding: 1.5rem;
+}
+
+/* Command Lines */
+.contact__command {
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.contact__command::before {
+  content: '$ ';
+  color: var(--color-primary);
+}
+
+.contact__command span {
+  color: var(--color-accent);
+}
+
+/* Output */
+.contact__output {
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--color-border);
+}
+
+/* Links */
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+}
+
+.contact__link:hover {
+  color: var(--color-primary);
+  text-shadow: var(--text-glow);
+}
+
+.contact__link::before {
+  content: '>';
+  color: var(--color-primary);
+}
+
+.contact__link-label {
+  color: var(--color-text-muted);
+  min-width: 100px;
+}
+
+.contact__link-value {
+  color: var(--color-primary);
+}
+
+.contact__link:hover .contact__link-value {
+  text-decoration: underline;
+}
+
+/* Email Special Styling */
+.contact__email {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  text-shadow: var(--text-glow);
+  margin-bottom: 1.5rem;
+}
+
+.contact__email a {
+  transition: all var(--transition-fast);
+}
+
+.contact__email a:hover {
+  color: var(--color-accent);
+}
+
+/* Social Links Row */
+.contact__social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.contact__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+}
+
+.contact__social-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.contact__social-link::before {
+  content: '[';
+}
+
+.contact__social-link::after {
+  content: ']';
+}
+
+/* CTA Text */
+.contact__cta {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.contact__cta-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background-color: var(--color-primary);
+  margin-left: 0.25rem;
+  animation: blink 1s step-end infinite;
+}
