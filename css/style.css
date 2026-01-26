@@ -387,6 +387,13 @@ img {
   position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
+  background: var(--color-gray-100);
+}
+
+.about__portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about__portrait-placeholder {
