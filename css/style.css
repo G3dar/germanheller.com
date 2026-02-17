@@ -637,7 +637,9 @@ img {
 
 .awards-media__photo {
   width: 214px;
+  max-width: 214px;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .awards-media__photo img {
