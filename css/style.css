@@ -649,6 +649,13 @@ img {
   border-radius: 4px;
 }
 
+.awards-media__photo figcaption {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  text-align: center;
+  margin-top: var(--spacing-xs);
+}
+
 /* --- Awards --- */
 .awards {
   max-width: 800px;
