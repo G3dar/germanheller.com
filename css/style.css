@@ -622,8 +622,7 @@ img {
 }
 
 .awards-media__video {
-  flex: 0 0 auto;
-  width: 214px;
+  flex: 0 0 214px;
   height: 380px;
   border-radius: 4px;
   overflow: hidden;
@@ -637,16 +636,17 @@ img {
 }
 
 .awards-media__photo {
-  flex: 0 0 auto;
+  flex: 0 0 214px;
   height: 380px;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .awards-media__photo img {
-  width: auto;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 55% center;
   border-radius: 4px;
 }
 
@@ -1102,11 +1102,12 @@ img {
   }
 
   .awards-media__video {
-    width: 169px;
+    flex: 0 0 169px;
     height: 300px;
   }
 
   .awards-media__photo {
+    flex: 0 0 169px;
     height: 300px;
   }
 
