@@ -610,14 +610,23 @@ img {
 
 /* --- Awards Media --- */
 .awards-media {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: var(--spacing-lg);
   margin-bottom: var(--spacing-3xl);
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+.awards-media__items {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.awards-media > figcaption {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-top: var(--spacing-sm);
 }
 
 .awards-media__video {
@@ -637,24 +646,17 @@ img {
 
 .awards-media__photo {
   width: 214px;
-  max-width: 214px;
+  height: 380px;
   flex-shrink: 0;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .awards-media__photo img {
-  width: 214px;
-  height: 380px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: 55% center;
-  border-radius: 4px;
-}
-
-.awards-media__photo figcaption {
-  font-size: var(--font-size-xs);
-  color: var(--color-gray-500);
-  text-align: center;
-  margin-top: var(--spacing-xs);
 }
 
 /* --- Awards --- */
@@ -1095,8 +1097,7 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .awards-media {
-    max-width: 100%;
+  .awards-media__items {
     gap: var(--spacing-sm);
   }
 
@@ -1106,10 +1107,6 @@ img {
   }
 
   .awards-media__photo {
-    width: 150px;
-  }
-
-  .awards-media__photo img {
     width: 150px;
     height: 267px;
   }
