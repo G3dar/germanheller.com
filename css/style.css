@@ -672,7 +672,11 @@ img {
   border-bottom: 1px solid var(--color-gray-200);
 }
 
-.award:last-child {
+.awards > .award:last-of-type {
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.awards__expanded > .award:last-child {
   border-bottom: none;
 }
 
@@ -701,6 +705,19 @@ img {
   font-size: var(--font-size-sm);
   color: var(--color-gray-500);
   flex-shrink: 0;
+}
+
+.awards__expanded {
+  display: none;
+}
+
+.awards__expanded.is-open {
+  display: block;
+}
+
+.awards__toggle {
+  display: block;
+  margin: var(--spacing-lg) auto 0;
 }
 
 /* --- Press --- */

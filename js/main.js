@@ -277,6 +277,21 @@
   };
 
   // ==========================================
+  // Awards Toggle
+  // ==========================================
+  const awardsToggle = () => {
+    const toggleBtn = document.querySelector('.awards__toggle');
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener('click', () => {
+      const expanded = document.querySelector('.awards__expanded');
+      expanded.classList.toggle('is-open');
+      toggleBtn.textContent = expanded.classList.contains('is-open')
+        ? 'Show Less' : 'View All Awards';
+    });
+  };
+
+  // ==========================================
   // Initialize
   // ==========================================
   const init = () => {
@@ -296,6 +311,7 @@
     headerScrollEffect();
     mobileNavigation();
     smoothScroll();
+    awardsToggle();
   };
 
   // Run on DOM ready
